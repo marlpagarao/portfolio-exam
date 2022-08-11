@@ -1,0 +1,61 @@
+<%- include('header') -%>
+<form action="/career" method="POST"></form>
+<!-- <div class = 'career'>
+    <div class = 'info'>
+        <label>Type of Goal</label>
+        <input type = 'text' name="goaltype"/>
+        <label>Description</label>
+        <input type = 'text' name="desc"/>
+        <label>Reason</label>
+        <input type = 'text' name="reason"/>
+        <label>Target Date</label>
+        <input type = 'text' name="target"/>
+        <label>Completed Date</label>
+        <input type = 'text' name="completed"/>
+        <button> Add goal </button>
+    </div>
+</div> -->
+
+<div class="table container">
+    <h2> Goals to be set</h2>
+    <table id="goals"class="table table-dark table-striped rounded">
+      <thead>
+        <tr>
+          <th>Name of Goal</th>
+          <th>Description</th>
+          <th>Target Date</th>
+          <th>Completed Date</th>
+          <th>Edit or Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% users.forEach(function(user) {%>
+              <tr>
+                  <td><%= user.name %></td>
+                  <td><%= user.desc %></td>
+                  <td><%= moment(user.target).format('Do MMMM, YYYY') %></td>
+                  <td><%= moment(user.completed).format('Do MMMM, YYYY') %></td>
+
+                  <td>
+                      <a href="edit/<%= user.id %>" class="edit btn btn-sm btn-primary">Edit</a>
+                      <a href="delete/<%= user.id %>" class="delete btn btn-sm btn-danger">Delete</a>
+                  </td>
+              </tr>
+          <% }); %>
+      </tbody>
+    </table>
+    <a href="/add" class="btn btn-dark btn-lg">Add Goal</a><br/><br/>
+  </div>
+  <div id= "footer" class="bg-dark text-white">
+    <footer class="text-center text-lg-start"">
+      <div class="container d-flex justify-content-center py-5">
+        <button type="button" href="https://github.com/marlpagarao" class="btn btn-outline-dark btn-lg btn-floating mx-2"style="background-color: #b1a38e;">
+          <i class="bi bi-github"></i>
+        </button>
+        <button type="button" href="https://www.linkedin.com/in/marlpagrao/" class="btn btn-outline-dark btn-lg btn-floating mx-2" style="background-color: #b1a38e;">
+            <i class="bi bi-linkedin"></i>
+        </button>
+      </div>
+      </footer>
+    </div>
+</div>
